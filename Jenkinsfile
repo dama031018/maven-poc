@@ -6,14 +6,10 @@ pipeline {
                 sh "/opt/maven/bin/mvn clean"
             }
         }
-        stage('--test--') {
-            steps {
-                sh "/opt/maven/bin/mvn test"
-            }
-        }
+        
         stage('--package--') {
             steps {
-                sh "/opt/maven/bin/mvn package"
+                sh "/opt/maven/bin/mvn package -Dmaven.test.skip=true"
             }
         }
     }
